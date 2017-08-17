@@ -1,6 +1,5 @@
 package org.bcos.sample.app;
 
-import java.awt.print.Printable;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.util.concurrent.Future;
 
 import org.bcos.sample.web3j.SimpleStorage;
 import org.bcos.web3j.tx.BcosRawTxManager;
-import org.w3c.dom.html.HTMLAnchorElement;
 import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.Credentials;
@@ -94,7 +92,9 @@ public class BcosApp {
 		
 		BcosConfig config = JSON.parseObject(configString.toString(), BcosConfig.class);
 		System.out.println("the config: " + config.toString());
-		config.setWallet(path.getPath() + "../res/" + config.getWallet());
+		if (!config.getWallet().isEmpty() && config.getWallet().charAt(0) != '/') {
+			config.setWallet(path.getPath() + "../res/" + config.getWallet());
+		}
 		configure = config;
 		
 		System.out.println("the wallet: " + config.getWallet());
@@ -134,7 +134,7 @@ public class BcosApp {
 			return null;
 		}
 		
-		System.out.println("deploy success, address: " + simpleStorage.getContractAddress());
+		//System.out.println("deploy success, address: " + simpleStorage.getContractAddress());
 		return new Address(simpleStorage.getContractAddress());
 	}
 	
@@ -154,7 +154,7 @@ public class BcosApp {
 			e.printStackTrace();
 		}
 		
-		System.out.println("execute transaction successully, txHash: " + receipt.getTransactionHash());
+		//System.out.println("execute transaction successully, txHash: " + receipt.getTransactionHash());
 		return receipt;
 	}
 	
@@ -174,7 +174,7 @@ public class BcosApp {
 			e.printStackTrace();
 		}
 		
-		System.out.println("the call value: " + storedData.intValue());
+		//System.out.println("the call value: " + storedData.intValue());
 		return storedData;
 	}
 

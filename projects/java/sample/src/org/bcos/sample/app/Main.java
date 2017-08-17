@@ -1,26 +1,9 @@
 package org.bcos.sample.app;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.math.BigInteger;
-import java.net.URL;
 
-import org.bcos.sample.web3j.SimpleStorage;
-import org.juzix.web3j.protocol.CostomerWeb3j;
-import org.juzix.web3j.protocol.CustomerWeb3jFactory;
 import org.web3j.abi.datatypes.Address;
-import org.web3j.crypto.Credentials;
-import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.protocol.http.HttpService;
-import org.web3j.protocol.parity.Parity;
-
-import com.alibaba.fastjson.JSON;
-
-import sun.awt.image.IntegerInterleavedRaster;
 
 public class Main {
 
