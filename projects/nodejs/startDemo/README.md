@@ -1,12 +1,12 @@
-##### It features: 
+##### :cat: It features: 
 - write a simple smart contract
 - deploy a contract
 
-##### Dependence:
+##### :cat: Dependence:
 - babel-node
 - es2017
 
-##### Quick Start:
+##### :cat: Quick Start:
 - running the startDemo
 
 ``` sh
