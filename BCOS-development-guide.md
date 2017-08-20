@@ -194,6 +194,17 @@ sample工程包括：
 
 ## Nodejs智能合约客户端开发
 
+### It features: 
+- write a simple smart contract
+- deploy a contract
+### Quick Start:
+- running the startDemo
+
+``` sh
+ $ cd startDemo
+ $ npm install
+ $ babel-node index.js
+```
 *********************************************************
 [web3j开发库]:https://github.com/bcosorg/bcos/blob/master/tool/java/output/
 [第三方依赖库]:https://github.com/bcosorg/bcos/blob/master/tool/java/third-part/
