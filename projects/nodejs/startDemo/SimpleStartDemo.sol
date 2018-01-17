@@ -10,7 +10,7 @@ contract SimpleStartDemo {
         storedData = 2;
     }
 
-    function setData(int256 x) public checkType(x){
+    function setData(int256 x) public {
         storedData = x;
         AddMsg(msg.sender, "[in the set() method]");
     }
