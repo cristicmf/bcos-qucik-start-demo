@@ -44,6 +44,13 @@ try {
     console.log("调用更新接口设置data=10" + '(交易哈希：' + receipt.transactionHash + ')');
     data = instance.getData();
     console.log("接口调用后读取接口返回:" + data);
+    var func = "setData(int256)";
+    var params = [3];
+    var receipt = await web3sync.sendRawTransaction(config.account, config.privKey, address, func, params);
+
+    console.log("调用更新接口设置data=3" + '(交易哈希：' + receipt.transactionHash + ')');
+    data = instance.getData();
+    console.log("接口调用后读取接口返回:" + data);
     // print out the log
     var event = instance.AddMsg({}, function(error, result) {
         if (!error) {
