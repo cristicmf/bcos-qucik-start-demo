@@ -1,6 +1,6 @@
 
 
-什么是solidity
+# 什么是solidity
 
 Solidity是一种[智能合约](https://github.com/EthFans/wiki/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6)高级语言，运行在Ethereum虚拟机（EVM）之上。
 
@@ -604,17 +604,68 @@ Solidity通过复制包括多态的代码来支持多重继承。
 ## 7. 限制
 
     基于EVM的限制，不能通过外部函数返回动态的内容
+    
+#### please keep in mind
+- Fail as early and loudly as possible
+- Favor pull over push payments
+- Order your function code: conditions, actions, interactions
+- Be aware of platform limits
+- Write tests
+- Fault tolerance and Automatic bug bounties
+- Limit the amount of funds deposited
+- Write simple and modular code
+- Don’t write all your code from scratch
+- Timestamp dependency: Do not use timestamps in critical parts of the code, because miners can manipulate them
+- Call stack depth limit: Don’t use recursion, and be aware that any call can fail if stack depth limit is reached
+- Reentrancy: Do not perform external calls in contracts. If you do, ensure that they are the very last thing you do
+- 
 
-## 8. 架构
+## 8. 合约架构
 
-[架构说明](https://github.com/FISCO-BCOS/Wiki/tree/master/%E6%B5%85%E8%B0%88%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95%EF%BB%BF)
+### truffle
+- [trufflesuite](https://github.com/trufflesuite/truffle)
+
+#### 优势
+大家都用它,简单易用，生态相对于其他合约框架更加全面
+
+#### 功能
+- 一键初始化开发合约的项目(包含配置)
+- 合约编译
+- 合约部署
+- 合约测试
+- 合约debug【可借鉴】
+
+但是！基于BCOS是没有办法用
+
+### upgrade smart contract
+
+- [upgradable](https://gist.github.com/Arachnid/4ca9da48d51e23e5cfe0f0e14dd6318f)
+- [solidity-proxy](https://github.com/maraoz/solidity-proxy/blob/master/test/test.js)
+
+- [solution flow looks](https://cdn-images-1.medium.com/max/1000/1*07eLbMtyPuMHK5BtFBCa2w.png)
+
+- [ContractFactory](https://github.com/cristicmf/ContractFactory)
+- [ether-router](https://github.com/cristicmf/ether-router)
+
 
 ## 9. 参考资料
+
+
+- [blog.zeppelin.solutions](https://blog.zeppelin.solutions/)
+- [solidity-workshop](https://github.com/androlo/solidity-workshop/blob/master/tutorials/2016-06-30-contract-oriented-programming-I.md)
+- [condition-orientated-programming](https://medium.com/@gavofyork/condition-orientated-programming-969f6ba0161a)
+- [区块链技术](http://www.tryblockchain.org/index.html)
+- [ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector)
+- [术语表](https://github.com/ethereum/wiki/blob/master/%5B%E4%B8%AD%E6%96%87%5D-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%9C%AF%E8%AF%AD%E8%A1%A8.md) 
+
 - [以太坊白皮书](https://github.com/EthFans/wiki/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%99%BD%E7%9A%AE%E4%B9%A6)
 - [0xproject.com](https://0xproject.com/wiki#Architecture)
 - [aragon-core](https://github.com/cristicmf/aragon-core)
 - [blog.zeppelin.solutions](https://blog.zeppelin.solutions/)
 - [solidity-workshop](https://github.com/androlo/solidity-workshop/blob/master/tutorials/2016-06-30-contract-oriented-programming-I.md)
-- [condition-orientated-programming](https://medium.com/@gavofyork/condition-orientated-programming-969f6ba0161a)
-- [区块链技术](http://www.tryblockchain.org/index.html)
-  
+
+
+## 10.Appendix：
+1. 以太坊合约的代码是使用低级的基于堆栈的字节码的语言写成的，被称为“以太坊虚拟机代码”或者“EVM代码”。代码由一系列字节构成，每一个字节代表一种操作。
+2. UTXO:比特币系统的“状态”是所有已经被挖出的、没有花费的比特币（技术上称为“未花费的交易输出，unspent transaction outputs 或UTXO”）的集合。每个UTXO都有一个面值和所有者（由20个字节的本质上是密码学公钥的地址所定义[1]）。一笔交易包括一个或多个输入和一个或多个输出。每个输入包含一个对现有UTXO的引用和由与所有者地址相对应的私钥创建的密码学签名。每个输出包含一个新的加入到状态中的UTXO。
+3. 区块链：区块链起源于中本聪的比特币，作为比特币的底层技术，本质上是一个去中心化的数据库。是指通过去中心化和去信任的方式集体维护一个可靠数据库的技术方案。
