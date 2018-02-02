@@ -1,6 +1,12 @@
 
 
-# 什么是solidity
+# 什么是智能合约
+
+> 定义：一个合约由一组代码（合约的函数）和数据（合约的状态组成，并且运行在以太坊虚拟机上.
+
+以太坊虚拟机（EVM）使用了256比特长度的机器码，是一种基于**堆栈的虚拟机**，用于执行**以太坊智能合约** 。由于EVM是针对以太坊体系设计的，因此使用了**以太坊账户模型（Account Model）进行价值传输**。
+
+## 什么是solidity
 
 Solidity是一种[智能合约](https://github.com/EthFans/wiki/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6)高级语言，运行在Ethereum虚拟机（EVM）之上。
 
@@ -622,20 +628,11 @@ Solidity通过复制包括多态的代码来支持多重继承。
 
 ## 8. 合约架构
 
-### truffle
-- [trufflesuite](https://github.com/trufflesuite/truffle)
+合约的架构分两层 数据合约和逻辑合约
+- 数据合约 【model】
+- 逻辑合约  [controller]
 
-#### 优势
-大家都用它,简单易用，生态相对于其他合约框架更加全面
-
-#### 功能
-- 一键初始化开发合约的项目(包含配置)
-- 合约编译
-- 合约部署
-- 合约测试
-- 合约debug【可借鉴】
-
-但是！基于BCOS是没有办法用
+这样分层的原因，是方便后期合约的升级。
 
 ### upgrade smart contract
 
