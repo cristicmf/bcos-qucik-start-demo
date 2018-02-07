@@ -373,16 +373,23 @@ Solidity总是在空闲内存指针所在位置创建一个新对象，且对应
 #### 6.4.2 数组的属性和方法
 
 length属性
+```
 
 storage变长数组是可以修改length
 
 memory变长数组是不可以修改length
 
+```
+
 push方法
+```
+
 
 storage变长数组可以使用push方法
 
 bytes可以使用push方法
+
+```
 
 
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
