@@ -236,7 +236,7 @@ COP的风格
 - Paper
 
 ## 5. 语法介绍
-
+[基础语法见官方API](https://solidity.readthedocs.io/)
 ### 5.1 值类型
 ---- 
 - 布尔(Booleans)
