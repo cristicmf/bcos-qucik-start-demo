@@ -384,6 +384,7 @@ storage变长数组可以使用push方法
 
 bytes可以使用push方法
 
+
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
     pragma solidity ^0.4.2;
