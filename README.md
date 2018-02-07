@@ -587,7 +587,7 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
 
 ### 6.6 Constant
 
-函数也可被声明为常量，这类函数将承诺自己不修改区块链上任何状态。
+函数也可被声明为`常量`，这类函数将承诺自己不修改区块链上任何状态。
 
 一般从链上获取数据时，get函数都会加上constant
 
@@ -637,13 +637,14 @@ Solidity通过复制包括多态的代码来支持多重继承。
 ```
 
 ##### 最简单的合约架构
-[1:1合约架构图](https://www.processon.com/view/link/596587b7e4b0a77c5aecea11)
+
 
 ## 7. 限制
 
     基于EVM的限制，不能通过外部函数返回动态的内容
     
 #### please keep in mind
+```
 - Fail as early and loudly as possible
 - Favor pull over push payments
 - Order your function code: conditions, actions, interactions
@@ -656,31 +657,31 @@ Solidity通过复制包括多态的代码来支持多重继承。
 - Timestamp dependency: Do not use timestamps in critical parts of the code, because miners can manipulate them
 - Call stack depth limit: Don’t use recursion, and be aware that any call can fail if stack depth limit is reached
 - Reentrancy: Do not perform external calls in contracts. If you do, ensure that they are the very last thing you do
+```
 
 ## 8. 语言本身存在的痛点
-
+```
 1. ABI支持的类型有限，难以返回复杂的结构体类型。
-
 2. Deep Stack的问题
-
 3. 难以调试，只能靠event log ，进行合约的调试
-
 4. 合约调用合约只能使用定长数组
-
+```
 
 ## 9. 合约架构
 
 ###  合约架构分层
 #### 最简单的架构
+[1->1合约架构图](https://www.processon.com/view/link/596587b7e4b0a77c5aecea11)
+```
 合约的架构分两层数据合约和逻辑合约
-
-数据合约 【model】
-逻辑合约  【controller】
+model：数据合约
+controller：逻辑合约
 这样分层的原因，是方便后期合约的升级。
+```
 
-#### [bcos](https://github.com/FISCO-BCOS/Wiki/tree/master/%E6%B5%85%E8%B0%88%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95%EF%BB%BF)
+#### [获取更多合约架构详情](https://github.com/FISCO-BCOS/Wiki/tree/master/%E6%B5%85%E8%B0%88%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95%EF%BB%BF)
 
-### truffle
+### truffle框架
 - [trufflesuite](https://github.com/trufflesuite/truffle)
 
 #### 优势
