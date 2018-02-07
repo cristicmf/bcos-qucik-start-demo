@@ -1,39 +1,53 @@
-
-
 # 什么是智能合约
 
-> 定义：一个合约由一组代码（合约的函数）和数据（合约的状态组成，并且运行在以太坊虚拟机上.
+> 一个智能合约是一套以数字形式定义的承诺（promises） ，包括合约参与方可以在上面执行这些承诺的协议。一个合约由一组代码（合约的函数）和数据（合约的状态）组成，并且运行在以太坊虚拟机上.
 
 以太坊虚拟机（EVM）使用了256比特长度的机器码，是一种基于**堆栈的虚拟机**，用于执行**以太坊智能合约** 。由于EVM是针对以太坊体系设计的，因此使用了**以太坊账户模型（Account Model）进行价值传输**。
 
-## 什么是solidity
+##### 合约的代码具有什么能力：
 
-Solidity是一种[智能合约](https://github.com/EthFans/wiki/wiki/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6)高级语言，运行在Ethereum虚拟机（EVM）之上。
+```
+读取交易数据。
+读取或写入合约自己的存储空间。
+读取环境变量【块高，哈希值，gas】
+向另一个合约发送一个“内部交易”。
+```
+##### 在区块链平台的架构
+[区块链平台的架构](https://www.processon.com/view/link/596587b7e4b0a77c5aecea11)
 
-名词解释：
-- EVM：以太坊虚拟机(EVM)是智能合约的运行环境。它是一个完全独立的沙盒，合约代码在EVM内部运行，对外是完全隔离的，甚至不同合约之间也只有有限的访问权限。
-- 智能合约模型：一段代码（智能合约），被部署在分享的、复制的账本上，它可以维持自己的状态，控制自己的资产和对接收到的外界信息或者资产进行回应。
+## 1. 什么是solidity
 
-## 1. solidity 语言特点
+Solidity是一种智能合约高级语言，运行在Ethereum虚拟机（EVM）之上。
 
-它的语法接近于Javascript，是一种面向对象的语言。但作为一种真正意义上运行在网络上的去中心合约，它又有很多的不同，下面列举一些：
+solidity 语言特点
 
-- 以太坊底层是基于帐户，而非UTXO的。
-- 异常机制，一旦出现异常，所有的执行都将会被回撤，这主要是为了保证合约执行的原子性，以避免中间状态出现的数据不一致。
+它的语法接近于Javascript，是一种面向对象的语言。但作为一种真正意义上运行在网络上的去中心合约，它有很多的不同点：
+
+- 异常机制，类似于事务的原子性。一旦出现异常，所有的执行都将会被回撤，这主要是为了保证合约执行的原子性，以避免中间状态出现的数据不一致。
 - 运行环境是在去中心化的网络上，会比较强调合约或函数执行的调用的方式。因为原来一个简单的函数调用变为了一个网络上的节点中的代码执行
 - 存储是使用网络上的区块链，数据的每一个状态都可以永久存储。
 
 ## 2. 开发的工具
-准备工作
-##### [安装区块链](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master/sample)
+
 
 - [在线编译器Remix](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
-- Visual Studio + soliidty 插件
-
+- Visual Studio Code + soliidty 插件
 
 ## 3 快速入门
 
-### 3.1 举个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo/tree/master/startDemo)
+### 3.1 举个例子
+
+完整的步骤：
+1. 写合约
+2. 编译合约
+3. 部署合约
+4. 测试合约
+
+> 一个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo/tree/master/projects/nodejs/startDemo)
+
+
+
+```
 
     pragma solidity ^0.4.2;
     
@@ -62,9 +76,11 @@ Solidity是一种[智能合约](https://github.com/EthFans/wiki/wiki/%E6%99%BA%E
         }
     }
 
+```
+
 ### 3.2 部署合约
 
-举个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo/tree/master/startDemo)
+举个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo/tree/master/projects/nodejs/startDemo)
 
     $ babel-node index.js
 
@@ -214,7 +230,7 @@ COP的风格
 ## 5. 语法介绍
 
 ### 5.1 值类型
-
+---- 
 - 布尔(Booleans)
   true  false
   支持的运算符
@@ -358,9 +374,9 @@ Solidity总是在空闲内存指针所在位置创建一个新对象，且对应
 
 length属性
 
-storage变长数组是可以使用length访问
+storage变长数组是可以修改length
 
-memory变长数组是不可以使用length访问
+memory变长数组是不可以修改length
 
 push方法
 
@@ -382,8 +398,8 @@ bytes可以使用push方法
         stateVar = new uint[](1);
         stateVar[0] = 0;
         //自动扩充长度
-         uint len = stateVar.push(1);
-    
+         uint pusharr = stateVar.push(1);
+         uint len = stateVar.length;
         //不支持memory
         //Member "push" is not available in uint256[] memory outside of storage.
         //uint[] memory memVar = new uint[](1);
@@ -431,6 +447,7 @@ EVM的限制
 由于EVM的限制，不能通过外部函数直接返回动态数组和多维数组
 
 1. 将stroage数组不能直接返回，需要转换成memory类型的返回
+
 ```
       //Data层数据
       struct Rate {
@@ -447,6 +464,7 @@ EVM的限制
             return (Rates[key1].unit,exDataInt,exDataStr);
         }
 ```
+
 业务场景
 
 ### 6.5 函数
@@ -457,7 +475,6 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
 
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
-```
     pragma solidity ^0.4.5;
     
     contract FuntionTest{
@@ -491,14 +508,12 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
             //ft.internalFunc();
         }
     }
-```
 
 访问函数有外部(external)可见性。如果通过内部(internal)的方式访问，比如直接访问，你可以直接把它当一个变量进行使用，但如果使用外部(external)的方式来访问，如通过this.，那么它必须通过函数的方式来调用。
 
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
 ```
-
     pragma solidity ^0.4.2;
     
     contract SimpleStartDemo {
@@ -526,7 +541,6 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
 ```
-
     pragma solidity ^0.4.2;
     
     contract SimpleStartDemo {
@@ -544,8 +558,8 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
             AddMsg(msg.sender, "[in the set() method]");
         }
     }
-```
 
+```
 
 #### 6.5.4合约构造函数  同名函数
 
@@ -566,6 +580,7 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
 Solidity通过复制包括多态的代码来支持多重继承。
 
 父类
+
 ```
     pragma solidity ^0.4.4;
     
@@ -590,7 +605,8 @@ Solidity通过复制包括多态的代码来支持多重继承。
 ```
 
 子类
-```
+
+```  
     pragma solidity ^0.4.4;
     
     import "Meta.sol";
@@ -602,10 +618,10 @@ Solidity通过复制包括多态的代码来支持多重继承。
         	orgID = id;
         }
     }
-
 ```
 
-
+##### 最简单的合约架构
+[1:1合约架构图](https://www.processon.com/view/link/596587b7e4b0a77c5aecea11)
 
 ## 7. 限制
 
@@ -624,15 +640,43 @@ Solidity通过复制包括多态的代码来支持多重继承。
 - Timestamp dependency: Do not use timestamps in critical parts of the code, because miners can manipulate them
 - Call stack depth limit: Don’t use recursion, and be aware that any call can fail if stack depth limit is reached
 - Reentrancy: Do not perform external calls in contracts. If you do, ensure that they are the very last thing you do
-- 
 
-## 8. 合约架构
+## 8. 语言本身存在的痛点
 
-合约的架构分两层 数据合约和逻辑合约
-- 数据合约 【model】
-- 逻辑合约  [controller]
+1. ABI支持的类型有限，难以返回复杂的结构体类型。
 
+2. Deep Stack的问题
+
+3. 难以调试，只能靠event log ，进行合约的调试
+
+4. 合约调用合约只能使用定长数组
+
+
+## 9. 合约架构
+
+###  合约架构分层
+#### 最简单的架构
+合约的架构分两层数据合约和逻辑合约
+
+数据合约 【model】
+逻辑合约  【controller】
 这样分层的原因，是方便后期合约的升级。
+
+#### [bcos](https://github.com/FISCO-BCOS/Wiki/tree/master/%E6%B5%85%E8%B0%88%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95%EF%BB%BF)
+
+### truffle
+- [trufflesuite](https://github.com/trufflesuite/truffle)
+
+#### 优势
+大家都用它,简单易用，生态相对于其他合约框架更加全面
+
+#### 功能
+- 一键初始化开发合约的项目(包含配置)
+- 合约编译
+- 合约部署
+- 合约测试
+- 合约debug【可借鉴】
+
 
 ### upgrade smart contract
 
@@ -643,9 +687,10 @@ Solidity通过复制包括多态的代码来支持多重继承。
 
 - [ContractFactory](https://github.com/cristicmf/ContractFactory)
 - [ether-router](https://github.com/cristicmf/ether-router)
+- [bcos](https://github.com/FISCO-BCOS/Wiki/tree/master/%E6%B5%85%E8%B0%88%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95%EF%BB%BF)
 
 
-## 9. 参考资料
+## 10. 参考资料
 
 
 - [blog.zeppelin.solutions](https://blog.zeppelin.solutions/)
@@ -654,15 +699,13 @@ Solidity通过复制包括多态的代码来支持多重继承。
 - [区块链技术](http://www.tryblockchain.org/index.html)
 - [ABI](https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector)
 - [术语表](https://github.com/ethereum/wiki/blob/master/%5B%E4%B8%AD%E6%96%87%5D-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E6%9C%AF%E8%AF%AD%E8%A1%A8.md) 
-
-- [以太坊白皮书](https://github.com/EthFans/wiki/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%99%BD%E7%9A%AE%E4%B9%A6)
-- [0xproject.com](https://0xproject.com/wiki#Architecture)
-- [aragon-core](https://github.com/cristicmf/aragon-core)
-- [blog.zeppelin.solutions](https://blog.zeppelin.solutions/)
-- [solidity-workshop](https://github.com/androlo/solidity-workshop/blob/master/tutorials/2016-06-30-contract-oriented-programming-I.md)
+- [fisco-bcos](https://github.com/FISCO-BCOS)
 
 
-## 10.Appendix：
+## 11.相关名词解释：
 1. 以太坊合约的代码是使用低级的基于堆栈的字节码的语言写成的，被称为“以太坊虚拟机代码”或者“EVM代码”。代码由一系列字节构成，每一个字节代表一种操作。
 2. UTXO:比特币系统的“状态”是所有已经被挖出的、没有花费的比特币（技术上称为“未花费的交易输出，unspent transaction outputs 或UTXO”）的集合。每个UTXO都有一个面值和所有者（由20个字节的本质上是密码学公钥的地址所定义[1]）。一笔交易包括一个或多个输入和一个或多个输出。每个输入包含一个对现有UTXO的引用和由与所有者地址相对应的私钥创建的密码学签名。每个输出包含一个新的加入到状态中的UTXO。
 3. 区块链：区块链起源于中本聪的比特币，作为比特币的底层技术，本质上是一个去中心化的数据库。是指通过去中心化和去信任的方式集体维护一个可靠数据库的技术方案。
+
+
+
