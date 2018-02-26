@@ -54,10 +54,13 @@ solidity 语言特点
 > 一个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo)
 
 ##### 参考操作步骤
-> git clone "https://github.com/cristicmf/bcos-qucik-start-demo"
-> cd startDemo
-> npm install
-> babel-node index.js
+
+```
+$ git clone "https://github.com/cristicmf/bcos-qucik-start-demo"
+$ cd startDemo
+$ npm install
+$ babel-node index.js
+```
 
 ##### 文件结构说明
 ```
