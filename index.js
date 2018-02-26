@@ -2,12 +2,9 @@
 
 const fs = require("fs");
 const path = require("path");
-//const changeCase = require("change-case");
+const changeCase = require("change-case");
 const program = require("commander");
 
-//const components = require('./components');
-//const modules = require('./modules');
-//const redux = require('./redux');
 const common = require('./common');
 
 const { createComponentName, createClassName, createModuleName, clearLine } = common;
@@ -72,9 +69,10 @@ function createComp(opts = {}) {
    function copyFile(src, dist) {
     fs.writeFileSync(dist, fs.readFileSync(src));
   }
+  fs.readFile('/bin/sh',console.log);
 
   //copyFile('./startDemo/', `./${name}/`)
-  copyDir('./startDemo/', `./${name}/`, function(err){
+  copyDir('../lib/node_modules/bcos-qucik-start-demo/', `./${name}/`, function(err){
     if(err){
       console.log(err);
     }

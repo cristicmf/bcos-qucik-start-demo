@@ -1,6 +1,6 @@
 {
   "name": "bcos-qucik-start-demo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "tools for nodejs \"",
   "main": "index.js",
   "bin": "index.js",
