@@ -90,7 +90,7 @@ function run(name = '', parentName = '', cmd = {}) {
 };
 
 program
-  .name('create-react-file')
+  .name('bcos-qucik-start-demo')
   .arguments('<name> [parentName]')
   .action(run)
   .parse(process.argv); 
