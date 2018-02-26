@@ -23,13 +23,16 @@ $ cd contract-demo
 $ npm install
 $ babel-node index.js
 ```
-### 4. 文件结构说明
+### 4. 相关说明
+该项目只包含了合约编译，部署，测试常用的工具库
+
+### 5. 文件结构说明
 ```
 contract-demo
 ├── README.md
 ├── SimpleStartDemo.sol  # 合约代码
 ├── codeUtils.js
-├── config.js  # 配置文件
+├── config.js  # 项目配置文件
 ├── index.js   # 部署合约和测试合约
 ├── output     # abi/bin／address的输出
 │   ├── StartDemo.abi
