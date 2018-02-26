@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const changeCase = require("change-case");
+//const changeCase = require("change-case");
 const program = require("commander");
 
 //const components = require('./components');
