@@ -69,10 +69,10 @@ function createComp(opts = {}) {
    function copyFile(src, dist) {
     fs.writeFileSync(dist, fs.readFileSync(src));
   }
-  fs.readFile('/bin/sh',console.log);
-
+  console.log(__dirname);
+  //__dirname
   //copyFile('./startDemo/', `./${name}/`)
-  copyDir('../lib/node_modules/bcos-qucik-start-demo/', `./${name}/`, function(err){
+  copyDir(`__dirname/startDemo`, `./${name}/`, function(err){
     if(err){
       console.log(err);
     }
