@@ -60,6 +60,7 @@ solidity 语言特点
 > babel-node index.js
 
 ##### 文件结构说明
+```
 startDemo
 ├── README.md
 ├── SimpleStartDemo.sol  # 合约代码
@@ -73,6 +74,9 @@ startDemo
 ├── package.json
 ├── sha3.js
 └── web3sync.js
+```
+
+详细代码
 
 ```
 
