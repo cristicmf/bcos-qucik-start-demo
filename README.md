@@ -51,9 +51,28 @@ solidity 语言特点
 3. 部署合约
 4. 测试合约
 
-> 一个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo/tree/master/projects/nodejs/startDemo)
+> 一个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo)
 
+##### 参考操作步骤
+> git clone "https://github.com/cristicmf/bcos-qucik-start-demo"
+> cd startDemo
+> npm install
+> babel-node index.js
 
+##### 文件结构说明
+startDemo
+├── README.md
+├── SimpleStartDemo.sol  # 合约代码
+├── codeUtils.js
+├── config.js  # 配置文件
+├── index.js   # 部署合约和测试合约
+├── output     # abi/bin／address的输出
+│   ├── StartDemo.abi
+│   ├── StartDemo.address
+│   └── StartDemo.bin
+├── package.json
+├── sha3.js
+└── web3sync.js
 
 ```
 
