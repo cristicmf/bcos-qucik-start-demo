@@ -72,7 +72,7 @@ function createComp(opts = {}) {
   //console.log(__dirname);
   //__dirname
   //copyFile('./startDemo/', `./${name}/`)
-  copyDir(`__dirname/startDemo`, `./${name}/`, function(err){
+  copyDir(__dirname+'/startDemo', `./${name}/`, function(err){
     if(err){
       console.log(err);
     }
