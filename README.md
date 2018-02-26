@@ -46,12 +46,15 @@ solidity 语言特点
 ### 3.1 举个例子
 
 完整的步骤：
+
+```
 1. 写合约
 2. 编译合约
 3. 部署合约
 4. 测试合约
+```
 
-> 一个例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo)
+##### 获取例子[get demo](https://github.com/cristicmf/bcos-qucik-start-demo)
 
 ##### 参考操作步骤
 
