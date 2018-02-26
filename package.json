@@ -1,6 +1,6 @@
 {
   "name": "bcos-qucik-start-demo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "tools for nodejs \"",
   "main": "index.js",
   "bin": "index.js",
@@ -20,5 +20,13 @@
   "engines": {
     "node": ">=6.10.3",
     "npm": ">=3.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristicmf/bcos-qucik-start-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cristicmf/bcos-qucik-start-demo/issues"
+  },
+  "homepage": "https://github.com/cristicmf/bcos-qucik-start-demo#readme"
 }

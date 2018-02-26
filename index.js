@@ -69,7 +69,7 @@ function createComp(opts = {}) {
    function copyFile(src, dist) {
     fs.writeFileSync(dist, fs.readFileSync(src));
   }
-  console.log(__dirname);
+  //console.log(__dirname);
   //__dirname
   //copyFile('./startDemo/', `./${name}/`)
   copyDir(`__dirname/startDemo`, `./${name}/`, function(err){
