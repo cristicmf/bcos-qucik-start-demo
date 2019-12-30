@@ -462,11 +462,12 @@ bytes可以使用push方法
 
 1. 如果Memory数组作为函数的参数传递，只能支持ABI能支持的类型类型。
 2. Memory数组是不能修改修改数组大小的属性
+```
    [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
     pragma solidity ^0.4.2;
     
-    contract SimpleStartDemo {
+    contract SimpleStartDemoMemoryLength {
         function f() {
             //创建一个memory的数组
             uint[] memory a = new uint[](7);
@@ -486,7 +487,8 @@ bytes可以使用push方法
             b[9] = 100;
         }
     }
-
+    
+```
 EVM的限制
 
 由于EVM的限制，不能通过外部函数直接返回动态数组和多维数组
@@ -506,6 +508,8 @@ EVM的限制
      function getRate(int key1) public constant returns(int,uint[3],bytes32[3]) {
             uint[3] memory exDataInt = Rates[key1].exDataArr;
             bytes32[3] memory exDataStr = Rates[key1].exDataStr;
+            //uint[3]  exDataInt = Rates[key1].exDataArr;这种情况下也是可以编译通过的
+            //bytes32[3] exDataStr = Rates[key1].exDataStr;
             return (Rates[key1].unit,exDataInt,exDataStr);
         }
 ```
@@ -576,12 +580,15 @@ function (<parameter types>) {internal(默认)|external} constant [returns (<ret
 
 #### 6.5.2 函数调用
 
-- 内部调用，不会创建一个EVM调用，也叫消息调用
-- 外部调用，创建EVM调用，会发起消息调用
+- 内部调用，不会创建一个真实的EVM调用，也叫消息调用 
+- 外部调用，要创建一个真实的EMV调用
 
 #### 6.5.3 函数修改器(Function Modifiers)
 
 修改器(Modifiers)可以用来轻易的改变一个函数的行为。比如用于在函数执行前检查某种前置条件。修改器是一种合约属性，可被继承，同时还可被派生的合约重写(override)
+修改器可以被继承，使用将modifier置于参数后，返回值前即可。
+
+特殊_表示使用修改符的函数体的替换位置。
 
 [例子](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.10+commit.f0d539ae.js&optimize=false)
 
@@ -714,7 +721,7 @@ controller：逻辑合约
 - [trufflesuite](https://github.com/trufflesuite/truffle)
 
 #### 优势
-大家都用它,简单易用，生态相对于其他合约框架更加全面
+认可度相对较高,简单易用，生态相对于其他合约框架更加全面
 
 #### 功能
 - 一键初始化开发合约的项目(包含配置)
